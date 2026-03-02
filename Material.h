@@ -7,7 +7,7 @@ struct Material {
     char flaga;
 };
 
-struct Material* createMaterial(const char* nazwa, double gestosc, char flaga);
-void freeMaterial(struct Material* mat);
+struct Material* create_material(const char* nazwa, double gestosc, char flaga);
+void free_material(struct Material* mat);
 
 #endif
