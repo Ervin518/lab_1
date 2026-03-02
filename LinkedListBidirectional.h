@@ -4,21 +4,21 @@
 #include "Wezel.h"
 
 typedef struct {
-    struct Wezel* head;
+    struct Node* head;
 } LinkedList;
 
-LinkedList* createList();
-void freeList(LinkedList* list);
+LinkedList* create_list();
+void free_list(LinkedList* list);
 
 void print(LinkedList* list);
 void save(LinkedList* list, const char* filename);
-void loadList(LinkedList* list, const char* filename);
-void printActions();
+void load_list(LinkedList* list, const char* filename);
+void print_actions();
 
-struct Wezel* push(LinkedList* list, struct Material* mat);
-struct Wezel* pop(LinkedList* list);
-struct Wezel* popAt(LinkedList* list, int index);
-struct Wezel* pushAt(LinkedList* list, struct Material* mat, int index);
-struct Wezel* getElement(LinkedList* list, int index);
+struct Node* push(LinkedList* list, struct Material* mat);
+struct Node* pop(LinkedList* list);
+struct Node* pop_at(LinkedList* list, int index);
+struct Node* push_at(LinkedList* list, struct Material* mat, int index);
+struct Node* get_element(LinkedList* list, int index);
 
 #endif
