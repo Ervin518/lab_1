@@ -49,7 +49,7 @@ void print(LinkedList* list) {
     struct Node* current = list->head;
     int i = 0;
     while (current != NULL) {
-        printf("[%d] Name: %s, Density: %.2lf, Flag: %c\n",
+        printf("[%d] Nazwa: %s, Gestosc: %.2lf, Flaga: %c\n",
                i, current->material->nazwa, current->material->gestosc, current->material->flaga);
         current = current->next;
         i++;
@@ -175,3 +175,4 @@ void free_list(LinkedList* list) {
     }
     free(list);
 }
+
