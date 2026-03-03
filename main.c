@@ -18,7 +18,7 @@ int main() {
         switch (choice) {
             case 1: print(list); break;
             case 2:
-                printf("Name, Density, Flag: ");
+                printf("Nazwa, Gestosc, Flaga: ");
                 scanf("%99s %lf %c", nazwa, &gestosc, &flaga);
                 push(list, create_material(nazwa, gestosc, flaga));
                 break;
@@ -60,3 +60,4 @@ int main() {
     free_list(list);
     return 0;
 }
+
