@@ -6,58 +6,65 @@ int main() {
     LinkedList* list = create_list();
     load_list(list, "baza.txt");
 
-    int choice = -1, index;
-    char nazwa[100], flaga;
+    int choice = -1;
+    int index;
+    char nazwa[100];
     double gestosc;
-    struct Node* returned_node = NULL;
+    char flaga;
+    struct Node* temp = NULL;
 
     while (choice != 0) {
         print_actions();
-        if (scanf("%d", &choice) != 1) { while(getchar() != '\n'); continue; }
-
+        scanf("%d", &choice);
+        while (getchar() != '\n');
         switch (choice) {
-            case 1: print(list); break;
+            case 1:
+                print(list);
+                break;
             case 2:
-                printf("Nazwa, Gestosc, Flaga: ");
+                printf("Podaj: Nazwa Gestosc Flaga (np. Zelazo 7850 Z): ");
                 scanf("%99s %lf %c", nazwa, &gestosc, &flaga);
                 push(list, create_material(nazwa, gestosc, flaga));
                 break;
             case 3:
-                returned_node = pop(list);
-                if (returned_node) {
-                    printf("Removed: %s\n", returned_node->material->nazwa);
-                    free_node(returned_node);
-                } else {
-                    printf("List is empty.\n");
-                }
+                temp = pop(list);
+                if (temp) {
+                    printf("Usunieto: %s\n", temp->material->nazwa);
+                    free_node(temp);
+                } else printf("Lista jest pusta!\n");
                 break;
             case 4:
-                printf("Index, Name, Density, Flag: ");
+                printf("Podaj: Index Nazwa Gestosc Flaga: ");
                 scanf("%d %99s %lf %c", &index, nazwa, &gestosc, &flaga);
                 push_at(list, create_material(nazwa, gestosc, flaga), index);
                 break;
             case 5:
-                printf("Index: "); scanf("%d", &index);
-                returned_node = pop_at(list, index);
-                if (returned_node) {
-                    printf("Removed: %s\n", returned_node->material->nazwa);
-                    free_node(returned_node);
-                } else {
-                    printf("Failed to remove (incorrect index).\n");
-                }
+                printf("Podaj index do usuniecia: ");
+                scanf("%d", &index);
+                temp = pop_at(list, index);
+                if (temp) {
+                    printf("Usunieto: %s\n", temp->material->nazwa);
+                    free_node(temp);
+                } else printf("Brak elementu.\n");
                 break;
             case 6:
-                printf("Index: "); scanf("%d", &index);
-                returned_node = get_element(list, index);
-                if (returned_node) printf("Element: %s\n", returned_node->material->nazwa);
-                else printf("Element not found.\n");
+                printf("Podaj index do wyszukania: ");
+                scanf("%d", &index);
+                temp = get_element(list, index);
+                if (temp) printf("Znaleziono: %s (%.2lf) [%c]\n", temp->material->nazwa, temp->material->gestosc, temp->material->flaga);
+                else printf("Brak elementu.\n");
                 break;
-            case 7: save(list, "baza.txt"); break;
-            case 0: break;
-            default: printf("Input error.\n");
+            case 7:
+                save(list, "baza.txt");
+                printf("Zapisano!\n");
+                break;
+            case 0:
+                break;
+            default:
+                printf("Zly wybor!\n");
         }
     }
+
     free_list(list);
     return 0;
 }
-
