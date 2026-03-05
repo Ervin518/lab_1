@@ -1,6 +1,6 @@
 #ifndef LINKEDLISTBIDIRECTIONAL_H
 #define LINKEDLISTBIDIRECTIONAL_H
-#include "Node.h"
+#include "Wezel.h"
 
 struct LinkedList {
     struct Node* head;
